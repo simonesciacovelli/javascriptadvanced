@@ -30,19 +30,17 @@
 		}
 
 		.p2{
-			width: 70px;
-			height: 70px;
 			background-color: #BDBDBD;
-			margin-bottom: 50%;
-			margin-right: 50%;
-			margin-left: 50%;
-			margin-top: 50%x;
+			margin-bottom: 30px;
+			margin-right: 30px;
+			margin-left: 30px;
+			margin-top: 30px;
 			display: flex;
 			transition: 3s;
 			border-radius: 10px;
 			opacity: 0.5;
 			cursor: pointer;
-			/*position: absolute;*/
+			position: absolute;
 		}
 
 		.pattern:hover{
@@ -127,8 +125,62 @@
 
 }
 
+
 	$("#w").click(function() {
 		$(".pattern").toggleClass("p2")
+
+	var x = 0, y = 0,
+    vx = 0, vy = 0,
+	ax = 0, ay = 0;
+	
+var sphere = document.getElementsByClassName("pattern");
+
+if (window.DeviceMotionEvent != undefined) {
+	window.ondevicemotion = function(e) {
+		ax = event.accelerationIncludingGravity.x * 5;
+		ay = event.accelerationIncludingGravity.y * 5;
+		document.getElementById("accelerationX").innerHTML = e.accelerationIncludingGravity.x;
+		document.getElementById("accelerationY").innerHTML = e.accelerationIncludingGravity.y;
+		document.getElementById("accelerationZ").innerHTML = e.accelerationIncludingGravity.z;
+
+		if ( e.rotationRate ) {
+			document.getElementById("rotationAlpha").innerHTML = e.rotationRate.alpha;
+			document.getElementById("rotationBeta").innerHTML = e.rotationRate.beta;
+			document.getElementById("rotationGamma").innerHTML = e.rotationRate.gamma;
+		}		
+	}
+
+	setInterval( function() {
+		var landscapeOrientation = window.innerWidth/window.innerHeight > 1;
+		if ( landscapeOrientation) {
+			vx = vx + ay;
+			vy = vy + ax;
+		} else {
+			vy = vy - ay;
+			vx = vx + ax;
+		}
+		vx = vx * 0.98;
+		vy = vy * 0.98;
+		y = parseInt(y + vy / 50);
+		x = parseInt(x + vx / 50);
+		
+		boundingBoxCheck();
+		
+		sphere.style.top = y + "px";
+		sphere.style.left = x + "px";
+		
+	}, 25);
+} 
+
+
+function boundingBoxCheck(){
+	if (x<0) { x = 0; vx = -vx; }
+	if (y<0) { y = 0; vy = -vy; }
+	if (x>document.documentElement.clientWidth-20) { x = document.documentElement.clientWidth-20; vx = -vx; }
+	if (y>document.documentElement.clientHeight-20) { y = document.documentElement.clientHeight-20; vy = -vy; }
+	
+}
+
 	})
 
 
@@ -161,13 +213,10 @@
 // // ball.style.top  = (maxX*x/180 - 10) + "px";
 //  //ball.style.left = (maxY*y/180 - 10) + "px";
 //}
-
+//
 //window.addEventListener('deviceorientation', handleOrientation);
 
 
-if ($(".pattern").toggleClass("p2")) {
-
-}
 
 
 	</script>
