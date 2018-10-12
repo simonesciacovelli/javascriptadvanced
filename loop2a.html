@@ -9,11 +9,15 @@
 	
 	<style type="text/css">
 		
-		html{
+		html, body{
 			background-color: white;
+			width: 100%;
+			height: 100%;
+			margin: 0;
+
 		}
 
-		.pattern{
+		.pattern, .patternsec{
 			width: 70px;
 			height: 70px;
 			background-color: #BDBDBD;
@@ -22,10 +26,12 @@
 			margin-left: 10px;
 			margin-top: 10px;
 			display: flex;
+			align-items: center;
 			transition: 2s;
 			border-radius: 10px;
 			opacity: 0.5;
 			cursor: pointer;
+			justify-content: center;
 
 		}
 
@@ -40,7 +46,7 @@
 			border-radius: 10px;
 			opacity: 0.5;
 			cursor: pointer;
-			/*position: absolute;*/
+			align-self: center;
 		}
 
 		.pattern:hover{
@@ -50,35 +56,18 @@
 			box-shadow:0px 0px 70px grey;
 		}
 
-		#w:hover .pattern{
-			background-color: green;
-
-		}
-
 
 		#w{
-			/*border-style: solid;*/
-			/*margin-right: 70px;
-			margin-left: 70px;*/
-			padding-top: 70px;
-			width:60%;
-			height:60%;
-			display: flex;
-			flex-wrap: wrap;
-			transition:flex 3s ease;
-			flex-direction: row-reverse;
-			flex-basis: auto;
-			align-items: center;
-			flex-shrink: 1;
+			width:100%;
+			display: inline-grid;
+			transition: 3s;
+			grid-template-columns: 110px 110px 110px 110px 110px 110px 110px ;
   			justify-content: center;
-
-		}
-
-
-		body{
-			display: flex;
-			align-items: center;
-  			justify-content: center;
+  			grid-template-rows: auto auto auto;
+  			grid-auto-columns: 20px;
+  			justify-items: center;
+  			align-self: safe center; 
+  			padding-top: 30px;
 		}
 
 		.refresh {
@@ -96,7 +85,7 @@
 		}
 
 		.refresh2 {
-  		background: #FFFF url(arrow3.svg) center/40px no-repeat;
+  		background: #FFFF url(arrow2.svg) center/40px no-repeat;
   		height: 56px;
   		width: 56px;
   		margin: 1em;
@@ -109,31 +98,36 @@
   		cursor: pointer;
 		}
 
+
+		body{
+			display: flex;
+			align-items: center;
+  			justify-content: center;
+		}
+
+
+
 	</style>
 
 
 </head>
 <body>
 
+	<div class="row" id="w"></div>
 	<div class="refresh"></div>
-	<a href="loop2a.html"><div class="refresh2"></div></a>
-	<div id="w"></div>
-
-
+	<a href="loop2.html"><div class="refresh2"></div></a>
 	<script type="text/javascript">
 
-	for (let i = 0; i < 50; i++) {
-    
-    var element = document.createElement("div")
-	element.className = "pattern"
 
-	document.getElementById("w").appendChild(element)
-
-    console.log(element);
-
+for (let i = 0; i < 43; i++) {
     var snowTimer = 0;
 	var colors = ['red', 'blue', 'green', 'teal', 'rosybrown', 'tan', 'plum', 'saddlebrown'];
 	var boxes = document.getElementsByClassName("pattern");
+    var element = document.createElement("div")
+
+	element.className = "pattern"
+	document.getElementsByClassName("row")[0].appendChild(element);
+    console.log(element);
 
   for (i = 0; i < boxes.length; i++) {
   	setTimeout(function() {
@@ -141,28 +135,22 @@
 	var num = Math.floor(Math.random() * 100);
     boxes[i].style.borderRadius = num+'px';
 
-    var container = document.getElementById("w");
-
     var nam = Math.floor(Math.random() * 100);
     boxes[i].style.width = nam+'px'
     boxes[i].style.height = nam+'px'
 
-	$("pattern").fadeIn(3000);
-
-	}, snowTimer);
+	},snowTimer);
 	snowTimer += 2500;
 	
 	} 
-
 }
-
 
 	$("#w").click(function() {
 		$(".pattern").toggleClass("p2")
-		$("html").toggleClass("f")
+		$("#sphere").toggleClass("s2")
 	})
 
-	$('.refresh').on('click', function(){
+		$('.refresh').on('click', function(){
   location.href = location.href;
 });
 

@@ -88,6 +88,10 @@ a{
 	background-image: url(img/pattern2.png);
 }
 
+#p1{
+	background-image: url(img/pattern.png);
+}
+
 @media only screen and (max-width: 767px) {
     
     .flex-container {
