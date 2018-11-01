@@ -10,7 +10,7 @@
 	<style type="text/css">
 		
 		html{
-			background-color: white;
+			background-color: #1C1C1D;
 		}
 
 		.pattern{
@@ -24,21 +24,21 @@
 			display: flex;
 			transition: 2s;
 			border-radius: 10px;
-			opacity: 0.5;
+			opacity: 1;
 			cursor: pointer;
 
 		}
 
 		.p2{
 			background-color: #BDBDBD;
-			margin-bottom: 30px;
-			margin-right: 30px;
-			margin-left: 30px;
-			margin-top: 30px;
+			margin-bottom: 100px;
+			margin-right: 100px;
+			margin-left: 100px;
+			margin-top: 100px;
 			display: flex;
 			transition: 3s;
 			border-radius: 10px;
-			opacity: 0.5;
+			opacity: 1;
 			cursor: pointer;
 			/*position: absolute;*/
 		}
@@ -46,9 +46,17 @@
 		.pattern:hover{
 			opacity: 1;
 			border-radius: 50px;
-			background-color: red;
-			box-shadow:0px 0px 70px grey;
+			box-shadow:0px 0px 70px black;
+			-ms-animation:wiggle .3s 2;-moz-animation:wiggle .3s 2;-webkit-animation:wiggle .3s 2;animation:wiggle .3s 2;
 		}
+
+		
+		@-ms-keyframes wiggle{0%{-ms-transform:rotate(3deg);}50%{-ms-transform:rotate(-3deg);}100%{-ms-transform:rotate(3deg);}}
+		@-moz-keyframes wiggle{0%{-moz-transform:rotate(3deg);}50%{-moz-transform:rotate(-3deg);}100%{-moz-transform:rotate(3deg);}}
+		@-webkit-keyframes wiggle{0%{-webkit-transform:rotate(3deg);}50%{-webkit-transform:rotate(-3deg);}100%{-webkit-transform:rotate(3deg);}}
+		@keyframes wiggle{0%{transform:rotate(3deg);}50%{transform:rotate(-3deg);}100%{transform:rotate(3deg);}}
+		
+
 
 		#w:hover .pattern{
 			background-color: green;
@@ -56,7 +64,7 @@
 		}
 
 
-		#w{
+		.w{
 			/*border-style: solid;*/
 			/*margin-right: 70px;
 			margin-left: 70px;*/
@@ -74,6 +82,19 @@
 
 		}
 
+		.f{
+			width:100%;
+			height:100%;
+			display: flex;
+			flex-wrap: wrap;
+			transition:flex 3s ease;
+			flex-direction: row-reverse;
+			flex-basis: auto;
+			align-items: center;
+			flex-shrink: 1;
+  			justify-content: center;
+		}
+
 
 		body{
 			display: flex;
@@ -82,28 +103,54 @@
 		}
 
 		.refresh {
-  		background: #FFFF url(arrow.svg) center/40px no-repeat;
+  		background: #1C1C1D url(arrow.svg) center/40px no-repeat;
   		height: 56px;
   		width: 56px;
   		margin: 1em;
+  		opacity: 0;
   		border-radius: 50%;
-  		box-shadow: 0px 5px 30px #898992;
+  		box-shadow: 0px 10px 40px black;
   		position: fixed;
   		bottom: 20px;
-  		right: 20px;
   		transition: 1s;
+  		right: 20px;
   		cursor: pointer;
+  		-webkit-animation: fadeInFromNone 1s forwards;
+    	-moz-animation: fadeInFromNone 1s forwards;
+    	-o-animation: fadeInFromNone 1s forwards;
+    	animation: fadeInFromNone 1s forwards;
+
+    	-moz-animation-delay: 30s;
+    	-webkit-animation-delay: 30s;
+    	-o-animation-delay: 30s;
+   		 animation-delay: 30s;
 		}
 
+		@-webkit-keyframes fadeInFromNone {
+    0% {
+        opacity: 0;
+    }
+
+    1% {
+
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
 		.refresh2 {
-  		background: #FFFF url(arrow3.svg) center/40px no-repeat;
+  		background: #1C1C1D url(arrow3.svg) center/40px no-repeat;
   		height: 56px;
   		width: 56px;
   		margin: 1em;
   		border-radius: 50%;
-  		box-shadow: 0px 5px 30px #898992;
+  		box-shadow: 0px 10px 40px black;
   		position: fixed;
-  		bottom: 110px;
+  		top: 20px;
   		right: 20px;
   		transition: 1s;
   		cursor: pointer;
@@ -117,12 +164,12 @@
 
 	<div class="refresh"></div>
 	<a href="loop2a.html"><div class="refresh2"></div></a>
-	<div id="w"></div>
+	<div id="w" class="w"></div>
 
 
 	<script type="text/javascript">
 
-	for (let i = 0; i < 50; i++) {
+	for (let i = 0; i < 60; i++) {
     
     var element = document.createElement("div")
 	element.className = "pattern"
@@ -150,7 +197,7 @@
 	$("pattern").fadeIn(3000);
 
 	}, snowTimer);
-	snowTimer += 2500;
+	snowTimer += 500;
 	
 	} 
 
@@ -159,7 +206,7 @@
 
 	$("#w").click(function() {
 		$(".pattern").toggleClass("p2")
-		$("html").toggleClass("f")
+		$("#w").toggleClass("f")
 	})
 
 	$('.refresh').on('click', function(){
