@@ -107,7 +107,7 @@ h2{
 }
 
 .hd{
-  width: 290px;
+  width: 190px;
   height: auto;
   cursor: pointer;
   transition: 0.5s;
@@ -272,13 +272,13 @@ html, body {
 @media only screen and (max-width: 1024px) {
 
 .menubttn{
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   display: block;
 }
 
 .hd{
-  margin-left: 0;
+  margin-left: 20px;
 }
 
 .nav2{
