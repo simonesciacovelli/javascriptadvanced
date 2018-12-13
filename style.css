@@ -25,15 +25,13 @@ p{
     height: 100%;
     padding: 0;
     margin-top: 20px;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
-    justify-content: center;
+  	align-items: center;
+  	justify-content: center;
 }
 .row {
     width: auto;
+    margin:auto;
 }
 .flex-item {
     background-color: #E9E9E9;
@@ -46,7 +44,6 @@ p{
     font-family: 'Roboto', sans-serif;
 	font-weight: 300;
 	text-align:center;
-    text-align: center;
     transition: 0.5s;
     text-decoration: none;
     border-radius: 10px;
@@ -94,6 +91,10 @@ a{
 
 #p2{
 	background-image: url(img/p2.png);
+}
+
+#p3{
+	background-image: url(img/p3.png);
 }
 
 
