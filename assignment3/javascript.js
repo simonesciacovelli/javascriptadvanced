@@ -1,6 +1,5 @@
 
 Cookies.set('mousemove', '', { expires: 7 });
-$.cookie(); // => { "name": "value" }
 
 $( ".page" ).mousemove(function( event ) {
   var pageCoords = "( " + event.pageX + ", " + event.pageY + " )";
