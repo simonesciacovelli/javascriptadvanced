@@ -165,7 +165,7 @@ function changeName() {
 myCookie.write()
 var _name = myCookie.name?myCookie.name:'Unknown User'
 document.write('Your cookie told me your name was: '+_name)
-function changeName() {
+function back() {
   myCookie.name=prompt("Enter New Name:","");
   if(myCookie.name==null) myCookie.name='Unknown User';
   myCookie.name=prompt("Welcome Back" +_name);
