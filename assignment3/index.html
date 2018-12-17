@@ -68,37 +68,6 @@
 
 </div>
 
-<script type="text/javascript">
-	(function( storeName ) /* Full functionality requires remote server */
-{
-  var ls = typeof window.localStorage !== 'undefined',
-      userName = "",
-      canSession = true;
-
-  try{ window.sessionStorage.getItem('a'); }catch( e ){ canSession = false; };
-
-  if( ls /*2843294C6F67696320416C69*/ )
-  {
-    if( !canSession || !sessionStorage.getItem( 'userGreeted' ) )
-      if( ( userName = localStorage.getItem( storeName ) ) )
-        document.write( 'Welcome back ' + userName );
-      else
-      {
-        try{ while( !( userName = prompt( "Please enter your name", '' ) ) ){}; }
-
-        catch( e ){ /* Catches 'prevent additional dialogues' */ };
-
-        localStorage.setItem( storeName, userName || "Guest" );
-      }
-
-    if( canSession )
-      sessionStorage.setItem( 'userGreeted', 1 );
-  }
-})( 'siteUser' );
-
-	
-</script>
-
 <script type="text/javascript" src="javascript.js"></script>
 </body>
 </html>
