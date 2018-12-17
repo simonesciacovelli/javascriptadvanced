@@ -12,44 +12,31 @@
 <script src="cookies.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
 <title>Assignment 3</title>
+
 <script type="text/javascript">
-	function getCookie(c_name)
-{
-if (document.cookie.length>0)
-{ 
-c_start=document.cookie.indexOf(c_name + "=")
-if (c_start!=-1)
-{ 
-c_start=c_start + c_name.length+1 
-c_end=document.cookie.indexOf(";",c_start)
-if (c_end==-1) c_end=document.cookie.length
-return unescape(document.cookie.substring(c_start,c_end))
-} 
-}
-return null
+function getCookie(name) {
+    var setPos = document.cookie.indexOf(name + '='), stopPos = document.cookie.indexOf(';', setPos);
+    return !~setPos ? null : document.cookie.substring(
+        setPos, ~stopPos ? stopPos : undefined).split('=')[1];
 }
 
-function setCookie(c_name,value,expiredays)
-{
-var exdate=new Date()
-exdate.setDate(exdate.getDate()+expiredays)
-document.cookie=c_name+ "=" +escape(value)+
-((expiredays==null) ? "" : "; expires="+exdate)
-}
-
-function checkCookie()
-{
-username=getCookie('username')
-if (username!=null)
-  {alert('Welcome again '+username+'!')}
-else 
-  {
-  username=prompt('Please enter your name:',"")
-  if (username!=null && username!="")
-    {
-    setCookie('username',username,365)
+function setCookie(name, val, days, path) {
+    var cookie = name + "=" +  escape(val) + "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        cookie += ";expires=" + date.toGMTString();
     }
-  }
+    cookie += ";" + (path || "path=/");
+    console.log(cookie);
+    document.cookie = cookie;
+}
+
+var username = getCookie("username");
+if (!username) {
+    setCookie("username", prompt("please enter your name:"), 365);
+} else {
+    alert("welcome again " + username);
 }
 </script>
 </head>
