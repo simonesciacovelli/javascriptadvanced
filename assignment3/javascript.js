@@ -1,5 +1,4 @@
 
-
 $( ".page" ).mousemove(function( event ) {
   var pageCoords = "( " + event.pageX + ", " + event.pageY + " )";
   var clientCoords = "( " + event.clientX + ", " + event.clientY + " )";
